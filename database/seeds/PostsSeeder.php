@@ -20,6 +20,8 @@ class PostsSeeder extends Seeder
         $new_post->title=$faker->sentence(rand(2, 5));
         $new_post->content=$faker->text(rand(200, 300));
 
+        // $new_post->image_url = 'dummie.jpg';
+
         //genera slug
         $slug = str::slug($new_post->title, "-");
         $slug_base = $slug;

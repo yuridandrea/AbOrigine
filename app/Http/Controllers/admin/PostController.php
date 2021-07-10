@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 use App\Post;
 
@@ -38,6 +39,9 @@ class PostController extends Controller
         $data =[
           "posts" => Post::all()
         ];
+
+        
+
         return view ('admin.posts.create', $data);
     }
 
@@ -58,7 +62,6 @@ class PostController extends Controller
         $form_data = $request->all();
         $new_post = new Post();
 
-        $new_post->fill($form_data);
 
         //slug
         $slug = Str::slug($new_post->title);
@@ -74,9 +77,26 @@ class PostController extends Controller
         }
 
         $new_post->slug = $slug;
+        // dump($new_post);
         // $new_post->user_id = Auth::id();
-        $new_post->save();
+
+        // dump($form_data['image_url']);
+
+
+        //gestione foto
+        if(array_key_exists('image_url',$form_data)) {
+          $image_path = Storage::put('profile_image',$form_data['image_url']);
+          $form_data['image_url'] = $image_path; 
+        }
+
         
+        // dump($form_data);
+        $new_post->fill($form_data);
+
+        // dd($new_post);
+        
+        $new_post->save();
+
 
         return redirect()->route('admin.posts.index');
      }
@@ -114,6 +134,8 @@ class PostController extends Controller
         $data = [
           'post' => $post
         ];
+
+        
 
         return view ('admin.posts.edit', $data);
     }

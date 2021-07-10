@@ -1,6 +1,6 @@
 
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light my_nav">
     <a class="navbar-brand" href="{{route('guest-homepage')}}"><h3>Ab-Origine</h3></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -20,3 +20,4 @@
     </div>
   </nav>
 </header>
+
