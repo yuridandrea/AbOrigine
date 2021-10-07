@@ -3,6 +3,12 @@
   top: 0 !important;
   right: 0 !important;
   left: 0 !important;
-  background-color: transparent !important;
-  // opacity: 0;
+  background-color: white;
+  z-index: 9999;
+
+
+  h3 {
+    font-weight: bold;
+    
+  }
 }
