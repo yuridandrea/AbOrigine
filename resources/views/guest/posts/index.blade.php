@@ -87,9 +87,37 @@
     <div class="site-section">
       <div class="container">
 
+      <div>
+        <div class="mx-auto pull-right">
+            <div class="">
+                <form action="{{ route('posts.index') }}" method="GET" role="search">
+
+                    <div class="input-group">
+                        <span class="input-group-btn mr-5 mt-1">
+                            <button class="btn btn-info" type="submit" title="Search projects">
+                                <span class="fas fa-search"></span>
+                            </button>
+                        </span>
+                        <input type="text" class="form-control mr-2" name="term" placeholder="Search projects" id="term">
+                        <a href="{{ route('posts.index') }}" class=" mt-1">
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="button" title="Refresh page">
+                                    <span class="fas fa-sync-alt"></span>
+                                </button>
+                            </span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
         <div class="row">
-          @foreach($posts as $post)
-          <div class="col-lg-4 col-md-6 mb-4">
+          @foreach($search_results as $post)
+          <div class="col-lg-4 col-md-6 mb-4 aos-init aos-animate" data-aos="fade-up">
             <div class="post-entry-1 h-100">
               <a href="{{route('posts.show', ['slug' => $post->slug])}}">
                 <img src="{{asset('storage/'.$post->image)}}" alt="Image"
@@ -98,7 +126,7 @@
               <div class="post-entry-1-contents">
                 
                 <h2><a href="single.html">{{$post->title}}</a></h2>
-                <span class="meta d-inline-block mb-3">{{$post->created_at}} <span class="mx-2">by</span> <!--<a href="#">nome autore</a>--></span>
+                <span class="meta d-inline-block mb-3">{{$post->created_at->format('d-m-Y')}} <span class="mx-2">by</span> <!--<a href="#">nome autore</a>--></span>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum molestias consectetur.</p>
               </div>
             </div>

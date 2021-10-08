@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Auth;
  * ! http://localhost:8000/
  */
 Route::get('/', 'HomeController@index')->name('guest-homepage');
+Route::post('/comment/store', 'CommentController@store')->name('comment.add');
+Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
 
 // # MODE 1: singole rotte, eventualmente con parametro {} # 
 // Route::get('/posts', 'PostController@index')->name('posts.index');

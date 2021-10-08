@@ -212,6 +212,15 @@ class PostController extends Controller
 			$form_data['image'] = $image_path;
 		}
 
+		if(array_key_exists('image_url',$form_data)) {
+			// salvo immagine in /storage/app/public/post_images/ e recupero path
+			// ! qui viene definita la cartella /post_images/ dentro /public/ !
+			$image_url_path = Storage::put('post_images',$form_data['image_url']);
+			//@dump($image_path);
+			// modifico il default path del form
+			$form_data['image_url'] = $image_url_path; 
+		}
+
 		// ! aggiornamento $post nella table posts; NON sono qui i tags !
 		// il post specifico acquisisce i dati del form (inclusa category) e aggiorna quelli già presenti nel DB
 		$post->update($form_data); // ! DB writing here !

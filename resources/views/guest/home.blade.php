@@ -70,16 +70,16 @@
       </header>
 
     <div class="ftco-blocks-cover-1">
-      <div class="site-section-cover overlay" style="background-image: url('images/hero_1.jpg')">
+      <div class="site-section-cover overlay" style="background-image: url('images/green.jpg')">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-md-5" data-aos="fade-right">
               <h1 class="mb-3 text-white">Let's Enjoy The Wonders of Nature</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta veritatis in tenetur doloremque, maiores doloribus officia iste. Dolores.</p>
-              <p class="d-flex align-items-center">
+              <!-- <p class="d-flex align-items-center">
                 <a href="https://vimeo.com/191947042" data-fancybox class="play-btn-39282 mr-3"><span class="icon-play"></span></a> 
                 <span class="small">Watch the video</span>
-              </p>
+              </p> -->
             </div>
           </div>
         </div>
@@ -119,19 +119,27 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
-            <div class="listing-item">
-              <div class="listing-image">
-                <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="listing-item-content">
-                <a class="px-3 mb-3 category bg-primary" href="#">$200.00</a>
-                <h2 class="mb-1"><a href="trip-single.html">Dignissimos debitis</a></h2>
-              </div>
-            </div>
-          </div>
+            @foreach($posts as $post)
+            @if($loop->index < 6)
 
-          <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+              <a href="{{route('posts.show', ['slug' => $post->slug])}}">  
+              <div class="listing-item">
+                  <div class="listing-image">
+                    <img src="{{asset('storage/'.$post->image)}}" alt="Image" class="img-fluid">
+                  </div>
+                  <div class="listing-item-content">
+                    <!-- <a class="px-3 mb-3 category bg-primary" href="#">$200.00</a> -->
+                    <h2 class="mb-1">{{$post->title}}</h2>
+                  </div>
+                </div>
+              </a>
+              </div>
+            @endif
+            @endforeach
+
+
+          <!-- <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
             <div class="listing-item">
               <div class="listing-image">
                 <img src="images/img_2.jpg" alt="Image" class="img-fluid">
@@ -189,14 +197,14 @@
                 <h2 class="mb-1"><a href="trip-single.html">Consectetur Amet</a></h2>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
 
       </div>
     </div>
 
-    <div class="site-section">
+    <!-- <div class="site-section">
 
       <div class="container">
         <div class="row justify-content-center text-center">
@@ -263,12 +271,12 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
 
 
     
 
-    <div class="site-section">
+    <!-- <div class="site-section">
 
       <div class="container">
 
@@ -346,6 +354,18 @@
         </div>
 
       </div>
+    </div> -->
+
+    <div class="site-section bg-image overlay" style="background-image: url('images/woman.jpg')">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 text-center">
+            <h2 class="font-weight-bold text-white">Join and Trip With Us</h2>
+            <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus ut, doloremque quo molestiae nesciunt officiis veniam, beatae dignissimos!</p>
+            <p class="mb-0"><a href="#" class="btn btn-primary text-white py-3 px-4">Get In Touch</a></p>
+          </div>
+        </div>
+      </div>
     </div>
 
 
@@ -411,7 +431,7 @@
     </div>
     
 
-    <div class="site-section bg-image overlay" style="background-image: url('images/hero_1.jpg')">
+    <div class="site-section bg-image overlay" style="background-image: url('images/beach.jpg')">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 text-center">
@@ -427,9 +447,9 @@
 
     </div>
 
-    @include('partials/scripts')
-
+    
   </body>
+  @include('partials/scripts')
 
 </html>
 

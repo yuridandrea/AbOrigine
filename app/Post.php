@@ -44,4 +44,9 @@ class Post extends Model
 		 */ 
 		return $this->belongsToMany('App\Tag', 'tags_posts');
 	}
+
+	// public function comments()
+    // {
+    //     return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
+    // }
 }

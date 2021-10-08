@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 
+
   @include('partials/head')
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -57,7 +58,11 @@
       </header>
 
     <div class="ftco-blocks-cover-1">
-      <div class="site-section-cover overlay" data-stellar-background-ratio="0.5" style="background-image: url('images/beach.jpg')">
+      @if($post->image_url)
+      <div class="site-section-cover overlay" data-stellar-background-ratio="0.5" style="background-image: url({{asset('storage/'.$post->image_url)}})">
+        @else
+        <div class="site-section-cover overlay" data-stellar-background-ratio="0.5" style="background-image: url('../images/ocean.jpg')">
+      @endif
         <div class="container">
           <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-7">
@@ -77,8 +82,39 @@
 
 
             <div class="pt-5">
-              <p>Categories:  <a href="#">Design</a>, <a href="#">Events</a>  Tags: <a href="#">#html</a>, <a href="#">#trends</a></p>
+              @if($post->category)<p>Category:  <a href="#">{{$post->category->name}}</a> @endif 
+
+              
+
+              @if($post->tag)Tags: 
+                @foreach($tags as $tag)
+                <a href="#">{{$tag->name}}</a></p>
+                @endforeach
+              @endif
             </div>
+
+
+            <!-- <div class="card-body">
+                <h5>Display Comments</h5>
+            
+                 @include(['comments' => $post->comments, 'post_id' => $post->id])
+
+                <hr />
+               </div>
+
+               <div class="card-body">
+                <h5>Leave a comment</h5>
+                <form method="post" action="{{ route('comment.add') }}">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" name="comment" class="form-control" />
+                        <input type="hidden" name="post_id" value="{{ $post->id }}" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Add Comment" />
+                    </div>
+                </form>
+               </div> -->
 
 
             <!-- <div class="pt-5">
@@ -206,11 +242,9 @@
             <div class="sidebar-box">
               <div class="categories">
                 <h3>Categories</h3>
-                <li><a href="#">Creatives <span>(12)</span></a></li>
-                <li><a href="#">News <span>(22)</span></a></li>
-                <li><a href="#">Design <span>(37)</span></a></li>
-                <li><a href="#">HTML <span>(42)</span></a></li>
-                <li><a href="#">Web Development <span>(14)</span></a></li>
+                @foreach($categories as $category)
+                <li><a href="#">{{$category->name}}<span></span></a></li>
+                @endforeach
               </div>
             </div>
             <div class="sidebar-box">
@@ -234,9 +268,9 @@
 
     </div>
 
-    @import('partials/scripts')
-
   </body>
+  @include('partials/scripts')
+  
 
 </html>
 
