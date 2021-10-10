@@ -87,7 +87,7 @@
     <div class="site-section">
       <div class="container">
 
-      <div>
+      <!-- <div>
         <div class="mx-auto pull-right">
             <div class="">
                 <form action="{{ route('posts.index') }}" method="GET" role="search">
@@ -110,14 +110,26 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
+    <form action="{{ route('posts.index') }}" method="GET">
+      <input type="text" name="search" required/>
+      <button type="submit">Search</button>
 
+      <a href="{{ route('posts.index') }}" class=" mt-1">
+        <span class="input-group-btn">
+            <button class="btn btn-danger" type="button" title="Refresh page">
+                <span class="fas fa-sync-alt"></span>
+            </button>
+        </span>
+    </a>
+    </form>
 
-        <div class="row">
-          @foreach($search_results as $post)
-          <div class="col-lg-4 col-md-6 mb-4 aos-init aos-animate" data-aos="fade-up">
+  <div class="row">
+    @if($posts->isNotEmpty())
+    @foreach ($posts as $post)
+    <div class="col-lg-4 col-md-6 mb-4 aos-init aos-animate" data-aos="fade-up">
             <div class="post-entry-1 h-100">
               <a href="{{route('posts.show', ['slug' => $post->slug])}}">
                 <img src="{{asset('storage/'.$post->image)}}" alt="Image"
@@ -127,20 +139,24 @@
                 
                 <h2><a href="single.html">{{$post->title}}</a></h2>
                 <span class="meta d-inline-block mb-3">{{$post->created_at->format('d-m-Y')}} <span class="mx-2">by</span> <!--<a href="#">nome autore</a>--></span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta, dolore harum molestias consectetur.</p>
+                <p>{{$post->content}}</p>
               </div>
             </div>
           </div>
-          @endforeach
+    @endforeach
+  </div>
+    @else 
+        <div>
+            <h2>No posts found</h2>
         </div>
-
+    @endif
         
-        <div class="col-12 mt-5 text-center">
+        <!-- <div class="col-12 mt-5 text-center">
           <span class="p-3">1</span>
           <a href="#" class="p-3">2</a>
           <a href="#" class="p-3">3</a>
           <a href="#" class="p-3">4</a>
-        </div>
+        </div> -->
         
       </div>
     </div> <!-- END .site-section -->

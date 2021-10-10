@@ -53,6 +53,22 @@
                 </div>
 
                 <div class="form-group">
+                    <label>really short description of the "image"</label>
+                    <textarea name="alt" class="form-control @error('alt') is-invalid @enderror" rows="10" placeholder="alt picture" required>{{ old('alt') }}</textarea>
+                    @error('alt')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label>a little description of the article</label>
+                    <textarea name="abstract" class="form-control @error('abstract') is-invalid @enderror" rows="10" placeholder="little description of the article" required>{{ old('abstract') }}</textarea>
+                    @error('abstract')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label>Contenuto</label>
                     <textarea name="content" class="form-control @error('content') is-invalid @enderror" rows="10" placeholder="Inizia a scrivere qualcosa..." required>{{ old('content') }}</textarea>
                     @error('content')

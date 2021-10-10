@@ -15,6 +15,7 @@ class AddCoverPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
 			$table->string('image')->after('slug')->nullable();
+            $table->text('alt')->nullable();
         });
     }
 

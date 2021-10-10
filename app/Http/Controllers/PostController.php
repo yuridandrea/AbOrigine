@@ -12,21 +12,18 @@ class PostController extends Controller
 	/**
 	 * All posts
 	 */
-    public function index() {
-		$posts = Post::All();
+    public function index(Request $request) {
 
-		$posts_search = Post::query();
-        if (request('term')) {
-            $posts_search->where('title', 'Like', '%' . request('term') . '%');
-        }
+		$search = $request->input('search');
 
-		$search_results = $posts_search->orderBy('id', 'DESC')->paginate(10);
 
-		//if(request('term')) 
-		dump($search_results);
+		$posts = Post::query()
+        ->where('title', 'LIKE', "%{$search}%")
+        ->orWhere('content', 'LIKE', "%{$search}%")
+        ->get();
 
 		// return view('guest.posts.index',compact('posts'));
-        return  view('guest.posts.index',compact('posts'),compact('search_results'));
+        return  view('guest.posts.index',compact('posts'));
 	}
 
 	/**
