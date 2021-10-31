@@ -20,10 +20,17 @@ class PostController extends Controller
 		$posts = Post::query()
         ->where('title', 'LIKE', "%{$search}%")
         ->orWhere('content', 'LIKE', "%{$search}%")
+		->orWhere('abstract', 'LIKE', "%{$search}%")
         ->get();
 
+		if (!empty($posts)) {
+			$posts_new=Post::all();
+			dump($posts_new);
+		}
+		// dump($posts);
+
 		// return view('guest.posts.index',compact('posts'));
-        return  view('guest.posts.index',compact('posts'));
+        return  view('guest.posts.index',compact('posts'),compact('posts_new'));
 	}
 
 	/**

@@ -26,8 +26,8 @@
 
             <div class="col-3 ">
               <div class="site-logo">
-                <a href="index.html" class="font-weight-bold">
-                  <img src="images/logo.png" alt="Image" class="img-fluid">
+                <a href="{{url('/')}}" class="font-weight-bold">
+                  <img src="images/logo-aborigine-full.png" alt="Image" class="img-fluid">
                 </a>
               </div>
             </div>
@@ -125,31 +125,58 @@
         </span>
     </a>
     </form>
-
-  <div class="row">
-    @if($posts->isNotEmpty())
-    @foreach ($posts as $post)
+    
+    <div class="row">
+      @if($posts->isNotEmpty())
+      @foreach ($posts as $post)
     <div class="col-lg-4 col-md-6 mb-4 aos-init aos-animate" data-aos="fade-up">
-            <div class="post-entry-1 h-100">
-              <a href="{{route('posts.show', ['slug' => $post->slug])}}">
-                <img src="{{asset('storage/'.$post->image)}}" alt="Image"
-                 class="img-fluid">
-              </a>
-              <div class="post-entry-1-contents">
-                
-                <h2><a href="single.html">{{$post->title}}</a></h2>
-                <span class="meta d-inline-block mb-3">{{$post->created_at->format('d-m-Y')}} <span class="mx-2">by</span> <!--<a href="#">nome autore</a>--></span>
-                <p>{{$post->content}}</p>
-              </div>
-            </div>
-          </div>
-    @endforeach
-  </div>
-    @else 
-        <div>
-            <h2>No posts found</h2>
+      <div class="post-entry-1 h-100">
+        <a href="{{route('posts.show', ['slug' => $post->slug])}}">
+          <img src="{{asset('storage/'.$post->image)}}" alt="{{$post->alt}}"
+            class="img-fluid">
+        </a>
+        <div class="post-entry-1-contents">
+          
+          <h2><a href="single.html">{{$post->title}}</a></h2>
+          <span class="meta d-inline-block mb-3">{{$post->created_at->format('d-m-Y')}} <span class="mx-2">by</span> <!--<a href="#">nome autore</a>--></span>
+          <p>{{$post->abstract}}</p>
         </div>
+      </div>
+    </div>
+    @endforeach
+    
+    @elseif($posts->isEmpty())
+      <h2 class="col-xs-12">No restults found</h2>
+    </div>
+    <div class="row">
+      <p class="col-xs-12">Read the latest articles</p>
+    </div>
+    <div class="row">
+  
+      @foreach ($posts_new as $post)
+      <div class="col-lg-4 col-md-6 mb-4 aos-init aos-animate" data-aos="fade-up">
+        <div class="post-entry-1 h-100">
+          <a href="{{route('posts.show', ['slug' => $post->slug])}}">
+            <img src="{{asset('storage/'.$post->image)}}" alt="{{$post->alt}}"
+              class="img-fluid">
+          </a>
+          <div class="post-entry-1-contents">
+            
+            <h2><a href="single.html">{{$post->title}}</a></h2>
+            <span class="meta d-inline-block mb-3">{{$post->created_at->format('d-m-Y')}} <span class="mx-2">by</span> <!--<a href="#">nome autore</a>--></span>
+            <p>{{$post->abstract}}</p>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    
+  
     @endif
+  </div>
+
+  
+
+
         
         <!-- <div class="col-12 mt-5 text-center">
           <span class="p-3">1</span>

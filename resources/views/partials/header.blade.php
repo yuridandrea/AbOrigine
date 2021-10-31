@@ -6,7 +6,7 @@
             <div class="col-3 ">
               <div class="site-logo">
                 <a href="index.html" class="font-weight-bold">
-                  <img src="images/logo.png" alt="Image" class="img-fluid">
+                  <img src="images/logo-aborigine-full.png" alt="Image" class="img-fluid">
                 </a>
               </div>
             </div>

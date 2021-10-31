@@ -27,11 +27,15 @@ class HomeController extends Controller
 
     public function index()
     {
+
 		$data = [
 			'categories' 	=> Category::all(),
 			'tags' 		    => Tag::all(),
 			'posts' 		=> Post::all(),
  		];
+
+		 
+
 		
 		 if(!$data['categories'] || !$data['tags'] || !$data['posts']) {
 			abort(404);
@@ -67,7 +71,7 @@ class HomeController extends Controller
 		$new_lead->save();
 
 		// invio email notifica del contatto
-		Mail::to('commerciale@boolpress.it')
+		Mail::to('staff@aborigine.com')
 			->send(new SendNewMail($new_lead));
 
 		// torno a view contatti

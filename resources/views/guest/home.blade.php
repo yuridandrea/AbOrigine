@@ -26,8 +26,8 @@
 
             <div class="col-3 ">
               <div class="site-logo">
-                <a href="index.html" class="font-weight-bold">
-                  <img src="images/logo.png" alt="Image" class="img-fluid">
+                <a href="{{url('/')}}" class="font-weight-bold">
+                  <img src="images/logo-aborigine-full.png" alt="Image" class="img-fluid">
                 </a>
               </div>
             </div>
@@ -100,7 +100,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos debitis enim a pariatur molestiae.</p>
           </div>
           <div class="col-md-6" data-aos="fade-right">
-            <img src="images/traveler.jpg" alt="Image" class="img-fluid">
+            <img src="images/logotype.png" alt="Image" class="img-fluid slide-pic">
           </div>
         </div>
       </div>
@@ -112,9 +112,9 @@
         <div class="row justify-content-center text-center">
           <div class="col-md-7">
             <div class="heading-39101 mb-5">
-              <span class="backdrop text-center">Journey</span>
-              <span class="subtitle-39191">Journey</span>
-              <h3>Your Journey Starts Here</h3>
+              <span class="backdrop text-center">Articles</span>
+              <span class="subtitle-39191">Articles</span>
+              <h3>Our latest Articles</h3>
             </div>
           </div>
         </div>
@@ -356,13 +356,13 @@
       </div>
     </div> -->
 
-    <div class="site-section bg-image overlay" style="background-image: url('images/woman.jpg')">
+    <div class="site-section bg-image overlay" style="background-image: url('images/woman.jpg'); min-height: 400px">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 text-center">
-            <h2 class="font-weight-bold text-white">Join and Trip With Us</h2>
+            <!-- <h2 class="font-weight-bold text-white">Join and Trip With Us</h2>
             <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus ut, doloremque quo molestiae nesciunt officiis veniam, beatae dignissimos!</p>
-            <p class="mb-0"><a href="#" class="btn btn-primary text-white py-3 px-4">Get In Touch</a></p>
+            <p class="mb-0"><a href="#" class="btn btn-primary text-white py-3 px-4">Get In Touch</a></p> -->
           </div>
         </div>
       </div>
@@ -375,9 +375,9 @@
         <div class="row justify-content-center text-center">
           <div class="col-md-10">
             <div class="heading-39101 mb-5">
-              <span class="backdrop text-center">Blog</span>
-              <span class="subtitle-39191">Updates</span>
-              <h3>Our Blog</h3>
+              <span class="backdrop text-center">Autumn</span>
+              <span class="subtitle-39191">Series</span>
+              <h3>Autumn</h3>
             </div>
           </div>
         </div>
